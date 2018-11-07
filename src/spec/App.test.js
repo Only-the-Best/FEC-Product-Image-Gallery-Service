@@ -138,47 +138,62 @@ describe('App', () => {
     expect(axios.get).toHaveBeenCalledWith('local:host')
     // console.log(wrapper.html())
     
-    // console.log('msg', wrapper.find('TopNav').prop())
-    // expect(wrapper.update().find('TopNav').length).toBe(1)
-    // expect(wrapper.find('#loading-page').length).toBe(1);
-    // expect(wrapper.find('TopNav').length).toBe(1);
+    console.log('msg', wrapper.find('TopNav').prop())
+    expect(wrapper.update().find('TopNav').length).toBe(1)
+    expect(wrapper.find('#loading-page').length).toBe(1);
+    expect(wrapper.find('TopNav').length).toBe(1);
   })
 });
 
 
 
-// describe('TopNav', () => {
-//   let wrapper;
-//   beforeEach(() => {
-//     wrapper = shallow(<TopNav />)
-//   });
+describe('TopNav', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<TopNav />)
+  });
 
-//   test('should contain two main section that contains the necessary number of headers: ', () => {
-//       // expect(wrapper.find('#nav-top-main-right').length).toBe(1);
-//       expect(wrapper.find(DropDowns).length).toBe(6);
-//     })
+  test('should contain two main section that contains the necessary number of headers: ', () => {
+      expect(wrapper.find('#nav-top-main-right').length).toBe(1);
+      expect(wrapper.find(DropDowns).length).toBe(6);
+    })
 
-//   test('', () => {
-//     wrapper.find(DropDowns).simulate("click");
-//     wrapper.update();
-//     expect(wrapper.find(DropDowns).length).toBe(6);
-//   })
-// })
+  test('', () => {
+    wrapper.find(DropDowns).simulate("click");
+    wrapper.update();
+    expect(wrapper.find(DropDowns).length).toBe(6);
+  })
+})
 
 
-// describe('Toolbar', () => {
-//   let wrapper;
-//   beforeEach(() => {
-//     wrapper = mount(<NavToolbar />)
-//   });
+describe('Toolbar', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<NavToolbar />)
+  });
 
-//   test('should contain two main section that contains the necessary number of headers: ', () => {
-//     (async () => {
-//       await flushPromises();
-//       wrapper.update();
-//       expect(wrapper.find('.Nav-top-bar-header').length).toBe(10);
-//       expect(wrapper.find('nav-top-main-right').length).toBe(10);
-//     })();
-//   });
+  test('should contain two main section that contains the necessary number of headers: ', () => {
+    (async () => {
+      await flushPromises();
+      wrapper.update();
+      expect(wrapper.find('.Nav-top-bar-header').length).toBe(10);
+      expect(wrapper.find('nav-top-main-right').length).toBe(10);
+    })();
+  });
+	  
+  describe('Gallery', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<Gallery />)
+  });
 
-// })
+  test('should contain two main section that contains the necessary number of headers: ', () => {
+    (async () => {
+      await flushPromises();
+      wrapper.update();
+      expect(wrapper.find('.slider').length).toBe(1);
+      expect(wrapper.find('img-container').length).toBe(1);
+    })();
+  });
+
+})
