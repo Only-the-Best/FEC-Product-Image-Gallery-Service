@@ -86,7 +86,12 @@
 }
 #nav-toolbar-list-Slide-left {
   -webkit-transition: 1.5s;
-  -moz-transition: 1.5s;
+  -moz-transition: 1.5s;#navItem-contact-highlight {
+                          transition: background-color 1s, color 1s;
+                          background-color: #0074e4;
+                          color: white;
+                          line-height: 25px;
+                        }
   -ms-transition: 1.5s;
   -o-transition: 1.5s;
   transition: 1.5s;
@@ -112,6 +117,7 @@
   transition: background-color 1s, color 1s;
   background-color: #0074e4;
   color: white;
+  line-height: 25px;
 }
 
 .fas, .far {
