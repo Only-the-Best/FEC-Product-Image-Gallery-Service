@@ -14,7 +14,7 @@
     "start": "nodemon server/index.js",
     "generateSampleData": "node database/generateSampleData.js",
     "db:setup": "node database/seed.js",
-    "lint": "eslint"
+    "lint": "eslint ./src --fix"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",

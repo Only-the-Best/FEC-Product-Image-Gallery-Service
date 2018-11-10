@@ -5,7 +5,6 @@ import Gallery from '../src/components/Gallery/Gallery.js';
 import PropertyInfo from '../src/components/Nav/PropertyInfo.js';
 import Logo from '../src/components/Nav/Logo.js'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Image } from 'react-bootstrap';
-import ImageGallery from '../src/components/Gallery/ImageGallery.js';
 import axios from 'axios';
 
 export default class App extends React.Component {
