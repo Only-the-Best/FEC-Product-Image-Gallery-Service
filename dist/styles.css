@@ -1,24 +1,30 @@
 .dropdown > li.dropdown.open {
   position: static;
 }
+
 .dropdown:hover .dropdown-menu {
   display: table;
   width: 100%;
 
 }
+
 .navbar {
   margin-bottom: 0px;
 
 }
+
 .navbar-main {
   margin-left: 7em;
 }
+
 #Nav-top-right1, #Nav-top-right2, #Nav-top-right3 {
   color:#0074e4;
 }
+
 #Nav-top-right1:hover, #Nav-top-right2:hover, #Nav-top-right3:hover {
   color: #96b9da;
 }
+
 .dropdown:hover .dropdown-menu {
   display: table;
   border-radius: 0px;
@@ -30,7 +36,7 @@
 
 #nav-toolbar {
   background-color: #d9f0f9;
-}s
+}
 
 #nav-top-header {
   background-color: white;
@@ -44,7 +50,7 @@
   align-self: flex-start;
 }
 
-.img-side-pictures-container{
+.img-side-pictures-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -57,8 +63,7 @@
   
 }
 
-#brand
-{
+#brand {
   position: relative;
   bottom: 14px;
   left: 25px;
@@ -68,13 +73,11 @@
   background-color:black;
 }
 
-.Nav-top-bar-header{
+.Nav-top-bar-header {
   font-size: 15px;
   font-weight: 700;
   font-family: Gotham,gotham,Verdana,sans-serif;
 }
-
-
 
 #nav-top-main-right {
   margin-left: 100px;
@@ -84,6 +87,7 @@
   margin-left: 120px;
    
 }
+
 #nav-toolbar-list-Slide-left {
   -webkit-transition: 1.5s;
   -moz-transition: 1.5s;
@@ -101,6 +105,7 @@
   transition: 1.5s;
   margin-left: 11% !important;
 }
+
 .container > ul > li {
   border-right: 1px solid #fff;
 }
@@ -108,6 +113,7 @@
 .container > ul > li > a {
   font-weight: bold;
 }
+
 #navItem-contact-highlight {
   transition: background-color 1s, color 1s;
   background-color: #0074e4;
@@ -118,9 +124,11 @@
 .fas, .far {
   padding: 5px;
 }
+
 .navbar {
   border:0;
 }
+
 .propertyInfo-main {
   position: relative;
   vertical-align: top;
@@ -171,12 +179,19 @@
 }
 
 .carousel-control .glyphicon:hover {
+  color: #7BC0FF;
+}
 
- color: #7BC0FF;
+.carousel-control .glyphicon-repeat{ 
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  align-items:center;
+  margin-top: -10px;
+  font-size: 30px;
 }
 
 .home-profile-image {
-
   padding: 1px;
   width: 50em;
   height: 40em;

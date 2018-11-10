@@ -3,7 +3,17 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'rea
 
 const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
 const dropDownOptions = {
-  'Buy': headerArr,
+  'Buy': {
+    subHeader:'Homes for sale',
+    list: [
+      'Homes for sale',
+      'Foreclosures',
+      'For sale by owner',
+      'Open houses',
+      'New construction',
+      'Coming soon'
+    ] 
+  },
   'Rent': headerArr,
   'Sell': headerArr,
   'Mortgages': headerArr,

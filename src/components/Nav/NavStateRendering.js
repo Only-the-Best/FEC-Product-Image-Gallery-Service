@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
 import DropDowns from './DropDowns';
-// import './Nav.css';
 
 const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
 const dropDownOptions = {
@@ -38,7 +37,6 @@ export class Navi extends React.Component {
         <Navbar.Header>
           <Navbar.Brand>  
               <img style={{width: 100, height: 100}} src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" href="#home"/>
-              {/* <span style={{"textAlign": "center"}}>Zill-Woah!</span> */}   
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -66,7 +64,6 @@ export class Navi extends React.Component {
             <NavItem id="Nav-top-right2" href="#">Advertise</NavItem>
             <NavItem id="Nav-top-right3" href="#">Sign in</NavItem>
             <NavItem id="Nav-top-right4" href="#">Join</NavItem>
-
           </Nav>
         </Nav>
       </Navbar.Collapse>
