@@ -5,12 +5,10 @@
 .dropdown:hover .dropdown-menu {
   display: table;
   width: 100%;
-
 }
 
 .navbar {
   margin-bottom: 0px;
-
 }
 
 .navbar-main {
@@ -60,16 +58,15 @@
   padding: 1px;
   width: 320px;
   height: 250px
-  
 }
 
 #brand {
   position: relative;
-  bottom: 14px;
+  bottom: 15px;
   left: 25px;
   width: 100px;
   z-index: 10;
-  height: 100px;
+  height: 103px;
   background-color:black;
 }
 
@@ -85,7 +82,6 @@
 
 #nav-toolbar-list {
   margin-left: 120px;
-   
 }
 
 #nav-toolbar-list-Slide-left {
@@ -119,6 +115,30 @@
   background-color: #0074e4;
   color: white;
   line-height: 25px;
+}
+
+#drop-down-list-header-container {
+  padding: 15px;
+  padding-bottom: 0px;
+  text-align: left;
+}
+#drop-down-list-header {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#drop-down-list-container {
+  text-align: left;
+  padding: 15px;
+  padding-bottom: 5px;
+}
+.dropdown-menu > div > li > a:hover {
+  color: #0074e4;
+  opacity: 0.3;
+  text-decoration: none;
+}
+
+.dropdown-menu > div > li {
+  padding-bottom: 10px;
 }
 
 .fas, .far {
@@ -201,7 +221,6 @@
 #fixed-id {
   position: fixed;
 }
-
 
 /*  */
 @-webkit-keyframes closeWindow {

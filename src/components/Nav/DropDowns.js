@@ -1,36 +1,16 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
+import { NavDropdown, MenuItem } from 'react-bootstrap';
 
-const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
-const dropDownOptions = {
-  'Buy': {
-    subHeader:'Homes for sale',
-    list: [
-      'Homes for sale',
-      'Foreclosures',
-      'For sale by owner',
-      'Open houses',
-      'New construction',
-      'Coming soon'
-    ] 
-  },
-  'Rent': headerArr,
-  'Sell': headerArr,
-  'Mortgages': headerArr,
-  'Agent finder': headerArr,
-  'More': headerArr,
-};
 
-const DropDowns = ({header}) => {
+const DropDowns = ({header, dropDownHeader, dropDownList }) => {
   return (
   <NavDropdown className="Nav-top-bar-header" id="dropdowns-list" title={header}>
-            <MenuItem><b>Zipcode Home For Rent</b></MenuItem>
-            <MenuItem divider />
-            <MenuItem>Rental Buildings</MenuItem>
-            <MenuItem>Apartments for rent</MenuItem>
-            <MenuItem>Houses for rent</MenuItem>
-            <MenuItem>All Rental Listings</MenuItem>
-            <MenuItem>All Rental Buildings</MenuItem>
+      <div id="drop-down-list-header-container">
+        <span id="drop-down-list-header">{dropDownHeader}</span>
+      </div>
+      <div id="drop-down-list-container">
+        {dropDownList.map((dropList, i) => <MenuItem key={i}>{dropList}</MenuItem>) }
+      </div>
   </NavDropdown>
   ) 
 }

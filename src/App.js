@@ -4,7 +4,6 @@ import NavToolbar from './components/Nav/NavToolbar.js';
 import Gallery from '../src/components/Gallery/Gallery.js';
 import PropertyInfo from '../src/components/Nav/PropertyInfo.js';
 import Logo from '../src/components/Nav/Logo.js'
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Image } from 'react-bootstrap';
 import axios from 'axios';
 
 export default class App extends React.Component {
@@ -18,32 +17,15 @@ export default class App extends React.Component {
     }
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
   }
-  // componentDidMount() {
-  //   let imageId = Number(window.location.pathname.replace(/\/product\//, ''));
-  //   imageId = imageId % 100;
-  //   console.log('imageId is ', imageId)
-  //   if (imageId >= 0 && imageId <= 100) {
-  //     axios.get(`/product/${imageId}`).then(result => {
-  //         console.log('result is ', result);
-  //         this.setState({
-  //           propInfo: result.data
-  //         })
-  //         console.log('this.state.propInfo[0] is ', this.state.propInfo[0].imageUrl)
-  //       })
-  //   }
-  //   this.updateWindowHeight();
-  // }
+
   componentDidMount() {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     imageId = imageId % 100;
-    console.log('imageId is ', imageId)
     if (imageId >= 0 && imageId <= 100) {
       axios.get(`/homes/${imageId}`).then(result => {
-          console.log('result is ', result);
           this.setState({
             propInfo: result.data
           })
-          console.log('this.state.propInfo[0] is ', this.state.propInfo[0].imageUrl)
         })
     }
     this.updateWindowHeight();
@@ -67,7 +49,6 @@ export default class App extends React.Component {
 
   render(){
     const {height, slider, propInfo} = this.state
-    console.log('propInfo, ', propInfo)
     if (propInfo.length) {
       return (
         <div className="main-wrapper">
