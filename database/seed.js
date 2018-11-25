@@ -15,13 +15,13 @@ const sampleData = sample;
 
 const insertDb = () => {
 	Gallery.create(sampleData)
-		.then(() => console.log('sample data inserted into Database'))
+		.then(() => console.log('sample data is now inserted into Database'))
     .then(() => mongoose.connection.close())
     .then(() => {
 			if ( fs.existsSync( path.join(__dirname, 'sampleData.js') ) ) {
 				fs.unlink(path.join(__dirname, 'sampleData.js'), (err) => {
 					if (err) throw err;
-					console.log('sampleData.js was deleted');
+					console.log('Deleted generated sampleData file');
 			  });
 			}	
     })

@@ -17,14 +17,18 @@ export default class App extends React.Component {
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
   }
   
-  componentDidMount() {
+  componentWillMount() {
+    console.log('I dont know whats going on anymore');
     let imageId = Number(window.location.pathname.replace(/\//, ''));
-    imageId = imageId % 100;
+    if (!(imageId > 0 && imageId <= 100)) {
+      imageId = Math.floor(Math.random() * 100) + 1;
+    }
+    console.log('imagesId:', imageId);
     if (imageId >= 0 && imageId <= 100) {
-      axios.get(`http://imggallery-env.2bigungm3u.us-west-1.elasticbeanstalk.com/homes/${imageId}`)
+      axios.get(`http://img-gallery.us-west-1.elasticbeanstalk.com/homes/${imageId}`)
       .then(result => {
         this.setState({
-          propInfo: result.data
+          propInfo: result.data 
         })
       })
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
@@ -48,7 +52,7 @@ export default class App extends React.Component {
   }
 
   render(){
-    const {height, slider, propInfo} = this.state
+    const {height, slider, propInfo} = this.state;
     if (propInfo.length) {
       return (
         <div className="main-wrapper">
@@ -60,9 +64,9 @@ export default class App extends React.Component {
       )
     } else {
       return (
-        <div id="loading-page">NOT Loading...</div>
+        <div id="loading-page">Loading...</div> 
       )
     }
-  };
+  }
 };
 

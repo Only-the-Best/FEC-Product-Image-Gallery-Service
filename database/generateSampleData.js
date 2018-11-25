@@ -15,14 +15,14 @@ const seed = [];
 let s3 = new AWS.S3({ apiVersion: '2006-03-01' });
 
 let params = {
-  Bucket: 'fec2homephotos'
+  Bucket: 'fechomephotos'
 };
 
 s3.listObjects(params, (err, data) => {
   if (err) {
     console.log(err);
   } else {
-    let baseURL = `https://s3-us-west-1.amazonaws.com/fec2homephotos/`;
+    let baseURL = `https://s3-us-west-1.amazonaws.com/fechomephotos/`;
     let generateImagesArr = () => {
       let imgArr = [];  
       for (let i = 1; i <= 40; i++) {
