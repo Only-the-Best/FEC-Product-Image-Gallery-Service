@@ -1,29 +1,25 @@
+const faker = require('faker');
 const Gallery = require('./Gallery.js');
+const db = require('./index.js');
 const mongoose = require('mongoose');
-const fs = require('fs');
-const path = require('path');
-const sample = require('./sampleData.js');
 
 
-// *** IMPORTANT *** Please follow the steps on generating sampleData
-// step1: Run 'npm run generateSampleData' script in terminal to generate sampleData
-// step2: Add 'module.exports = ' to the generated file 
-
-const sampleData = sample;
+const seed = Array.from({ length: 100 }, () => {
+  return {
+    imageUrl: Array.from({ length: 25 }, () => { faker.image.avatar() }),
+    address: faker.address.streetAddress(),
+    zipcode: faker.address.zipCode(),
+    city: faker.address.city(),
+    State: faker.address.state(),
+  }
+})
 
 const insertDb = () => {
-	Gallery.create(sampleData)
-		.then(() => console.log('sample data inserted into Database'))
-    .then(() => mongoose.connection.close())
-    .then(() => {
-			if ( fs.existsSync( path.join(__dirname, 'sampleData.js') ) ) {
-				fs.unlink(path.join(__dirname, 'sampleData.js'), (err) => {
-					if (err) throw err;
-					console.log('sampleData.js was deleted');
-			  });
-			}	
-    })
+  Gallery.create(seed)
+    .then(()=> mongoose.connection.close())
     .catch(err => console.log('error: ', err));
 };
 
 insertDb();
+
+module.exports = seed;

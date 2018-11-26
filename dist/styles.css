@@ -75,6 +75,9 @@
   font-weight: 700;
   font-family: Gotham,gotham,Verdana,sans-serif;
 }
+#favorite-active {
+  color: #f44245;
+}
 
 #nav-top-main-right {
   margin-left: 100px;
@@ -205,12 +208,14 @@
 .carousel-control .glyphicon-repeat{ 
   position: absolute;
   top: 50%;
+  right: 25%;
   z-index: 5;
   align-items:center;
   margin-top: -10px;
   font-size: 25px;
   padding:3px;
 }
+
 
 .home-profile-image {
   padding: 1px;
@@ -632,3 +637,6 @@
 }
 
 /*# sourceMappingURL=style.css.map*/
+
+
+

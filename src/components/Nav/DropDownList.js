@@ -1,6 +1,6 @@
 const topNavHeaders = {
-  'Buy': {
-    subHeader:['Homes for sale'],
+  Buy: {
+    subHeader: ['Homes for sale'],
     list: [
       'Homes for sale',
       'Foreclosures',
@@ -9,37 +9,37 @@ const topNavHeaders = {
       'New construction',
       'Coming soon',
       'Recent home sales',
-      'All homes'
-    ] 
+      'All homes',
+    ],
   },
-  'Rent': {
+  Rent: {
     subHeader: ['Search rentals'],
     list: [
       'Rental Buildings',
       'Apartments for rent',
       'Houses for rent',
       'All rental listings',
-      'All rental buildings'
-    ]
+      'All rental buildings',
+    ],
   },
-  'Sell': {
+  Sell: {
     subHeader: ['Selling tools'],
     list: [
       'Seeing your home\'s Zestimate',
       'Neighborhood Home Values',
       'Add a Home inspection',
-      'Sellers Guide'
-    ]
+      'Sellers Guide',
+    ],
   },
-  'Mortgages': {
+  Mortgages: {
     subHeader: ['Shop mortgages'],
     list: [
       'Mortgage lenders',
       'HELOC lenders',
       'Mortgage rates',
       'Refinance rates',
-      'All mortgage rates'
-    ]
+      'All mortgage rates',
+    ],
   },
   'Agent finder': {
     subHeader: ['Looking for Pros?'],
@@ -50,16 +50,16 @@ const topNavHeaders = {
       'Other pros',
       'Home improvement pros',
       'Home builders',
-      'Real estate photographers'
-    ]
+      'Real estate photographers',
+    ],
   },
-  'More': {
+  More: {
     subHeader: ['Blogs'],
     list: [
       'Zillow Porchlight',
       'Zillow engineering blog',
-      'Zillow research'
-    ]
+      'Zillow research',
+    ],
   },
 };
 
