@@ -17,13 +17,10 @@ export default class App extends React.Component {
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
   }
   
-  componentWillMount() {
-    console.log('I dont know whats going on anymore');
-    let imageId = Number(window.location.pathname.replace(/\//, ''));
-    if (!(imageId > 0 && imageId <= 100)) {
-      imageId = Math.floor(Math.random() * 100) + 1;
-    }
-    console.log('imagesId:', imageId);
+  componentDidMount() {
+    
+    let imageId = Number(window.location.pathname.replace(/\/browser\//, ''));
+    imageId = imageId || 0;
     if (imageId >= 0 && imageId <= 100) {
       axios.get(`http://img-gallery.us-west-1.elasticbeanstalk.com/homes/${imageId}`)
       .then(result => {
@@ -53,20 +50,18 @@ export default class App extends React.Component {
 
   render(){
     const {height, slider, propInfo} = this.state;
-    if (propInfo.length) {
-      return (
+    return (
+      <div>
+        {propInfo.length && 
         <div className="main-wrapper">
           <Logo />
           <NavToolbar height={height} slider={slider} />
           <PropertyInfo info={propInfo[0]} />
           <Gallery img={propInfo[0].imageUrl}/> 
         </div>
-      )
-    } else {
-      return (
-        <div id="loading-page">Loading...</div> 
-      )
-    }
+      }
+      {!propInfo.length && <div id="loading-page">Loading...</div> }    
+      </div>
+    )
   }
 };
-

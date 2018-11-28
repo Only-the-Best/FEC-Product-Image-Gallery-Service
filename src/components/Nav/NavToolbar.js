@@ -1,13 +1,19 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
 
 const NavToolbar = ({height, slider}) => {
+  const [save, saveFavorite] = useState(false);
+
   return (
-    <Navbar id="nav-toolbar" fixedTop={height}>
+    <Navbar expanded ={true} id="nav-toolbar" fixedTop={height}>
     <Nav id={slider}>  
       <NavItem id={height ? 'navItem-contact-highlight': 'navItem-contact'}>CONTACT AGENT</NavItem> 
-      <NavItem><i className="far fa-heart"></i>SAVE</NavItem> 
-      <NavItem><i className="fas fa-envelope-square"></i>SHARE</NavItem>
+      <NavItem id="add-favorites" onClick={() => saveFavorite(!save)}>
+        <span id={save ? 'favorite-active' : 'none'}><i className="far fa-heart" /></span>
+        SAVE
+      </NavItem> 
+      <NavItem id="share-house"><i className="fas fa-envelope-square"></i>SHARE</NavItem>
       <NavDropdown title="MORE" id="SubNav-dropdowns">
           <MenuItem >Print</MenuItem> 
           <MenuItem >Get New Listings In Email</MenuItem>

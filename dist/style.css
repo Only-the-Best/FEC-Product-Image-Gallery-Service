@@ -142,7 +142,11 @@
 }
 
 .fas, .far {
-  padding: 5px;
+  padding-right: 0.5em;
+}
+
+#favorite-active {
+  color: #f44245;
 }
 
 .navbar {
