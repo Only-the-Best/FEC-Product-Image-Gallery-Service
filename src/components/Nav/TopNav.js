@@ -22,13 +22,13 @@ export class TopNav extends React.Component {
               />
             ))
           }
-            <Nav id="nav-top-main-right">
+          </Nav>
+          <Nav id="nav-top-main-right">
               <NavItem id="Nav-top-right1" href="#">List your rental</NavItem>
               <NavItem id="Nav-top-right2" href="#">Advertise</NavItem>
               <NavItem id="Nav-top-right3" href="#">Sign in</NavItem>
               <NavItem id="Nav-top-right3" href="#">Join</NavItem>
             </Nav>
-          </Nav>
         </Navbar.Collapse>
       </Navbar>
     );

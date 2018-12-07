@@ -7,15 +7,8 @@ import {
 const NavToolbar = ({ height, slider }) => {
   const [save, saveFavorite] = useState(0);
 
-  // useEffect(() => {
-    
-  // });
-
   return (
   <Navbar id="nav-toolbar" fixedTop={height}>
-    <Navbar.Header>
-
-    </Navbar.Header>
     <Nav id={slider}>
       <NavItem id={height ? 'navItem-contact-highlight' : 'navItem-contact'}>CONTACT AGENT</NavItem>
       <NavItem onClick={() => saveFavorite(save + 1)}>
