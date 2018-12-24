@@ -3,19 +3,21 @@ import { Navbar, Image } from 'react-bootstrap';
 import TopNav from './TopNav.js';
 
 const Logo = () => (
-  <Navbar className="navbar">
-        <span><i className="far fa-heart" /></span>
+  <div>
+        <Navbar className="navbar">
+<Navbar.Header>
+  <Navbar.Brand>
+    <a href="/">
+      <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
+    </a>
+  </Navbar.Brand>
+</Navbar.Header>
+{/* <span id="logo-back-icon"><i className="fas fa-chevron-left"/></span> */}
 
-    <Navbar.Header>
-      <Navbar.Brand>
-        
-        <a href="/">
-          <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
-        </a>
-      </Navbar.Brand>
-    </Navbar.Header>
-    <TopNav />
-  </Navbar>
+<TopNav />
+</Navbar>
+  </div>
+  
 );
 
 export default Logo;

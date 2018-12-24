@@ -46,6 +46,8 @@
 }
 .main-profile {
   align-self: flex-start;
+  width: 50em;
+  height: 40em;
 }
 
 .img-side-pictures-container {
@@ -95,7 +97,12 @@
     display: none;
   }
 }
-
+#logo-back-icon {
+  position: relative;
+  bottom: 1.25em;
+  margin-right: -1em;
+  margin-left: -1em;
+}
 @media screen and (max-width: 994px) {
   
   .navbar-main {
@@ -113,6 +120,11 @@
   }
   #nav-toolbar-list {
     margin-left: 0px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .home-profile-image {
+    height: 100%;
   }
 }
 .container > ul {
@@ -261,12 +273,18 @@
   padding:3px;
 }
 
-
+/* 
 .home-profile-image {
   padding: 1px;
   width: 50em;
   height: 40em;
+} */
+
+.home-profile-image {
+  padding: 1px;
+  width: 100%;
 }
+
 
 #fixed-id {
   position: fixed;

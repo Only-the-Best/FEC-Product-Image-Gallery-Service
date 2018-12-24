@@ -120,7 +120,7 @@ export default class Gallery extends React.Component {
                 )
               }
             </div>
-            {/* <div className="img-side-pictures-container">
+            <div className="img-side-pictures-container">
               {
                 images.slice(1).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
@@ -133,10 +133,10 @@ export default class Gallery extends React.Component {
                   </div>
                 ))
               }
-            </div> */}
+            </div>
           </div>
         </Carousel.Item>
-        {/* <Carousel.Item>
+        <Carousel.Item>
           <div className="img-container">
             <div className="img-side-pictures-container">
               {
@@ -171,7 +171,7 @@ export default class Gallery extends React.Component {
               }
             </div>
           </div>
-        </Carousel.Item> */}
+        </Carousel.Item>
       </Carousel>
       
     );
