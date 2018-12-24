@@ -89,10 +89,33 @@
 
 @media screen and (max-width: 770px) { 
   .propertyInfo-main {
-    display:none;
+    display: none;
+  }
+  #nav-toolbar {
+    display: none;
   }
 }
-#nav-toolbar-list {
+
+@media screen and (max-width: 994px) {
+  
+  .navbar-main {
+    display: none;
+  }
+  .container {
+    float: left;
+  }
+  #brand {
+    width: 20%;
+    height: auto;
+    float: left;
+    margin-top: 0.5rem;
+    
+  }
+  #nav-toolbar-list {
+    margin-left: 0px;
+  }
+}
+.container > ul {
   margin-left: 120px;
 }
 

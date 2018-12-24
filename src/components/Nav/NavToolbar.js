@@ -8,11 +8,16 @@ const NavToolbar = ({ height, slider }) => {
   const [save, saveFavorite] = useState(0);
 
   return (
-  <Navbar id="nav-toolbar" fixedTop={height}>
+  <Navbar id="nav-toolbar" className="nav-toolbar-class" fixedTop={height}>
     <Nav id={slider}>
-      <NavItem id={height ? 'navItem-contact-highlight' : 'navItem-contact'}>CONTACT AGENT</NavItem>
+      <NavItem id={height ? 'navItem-contact-highlight' : 'navItem-contact'}>
+        <i className="far fa-comment"/>
+        CONTACT AGENT
+      </NavItem>
       <NavItem onClick={() => saveFavorite(save + 1)}>
-        <span id={save > 0 ? 'favorite-active' : 'none'}><i className="far fa-heart" /></span>
+        <span id={save > 0 ? 'favorite-active' : 'none'}>
+          <i className="far fa-heart" />
+        </span>
         SAVE
       </NavItem>
       <NavItem>
