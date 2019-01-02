@@ -271,7 +271,8 @@
   cursor: pointer
 }
 .carousel-control {
-  width:2%;
+  width: 5%;
+  font-size: 30px;
 }
 
 .carousel-control .glyphicon {
