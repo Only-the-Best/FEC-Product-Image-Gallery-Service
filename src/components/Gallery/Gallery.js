@@ -184,9 +184,10 @@ import { Carousel, Image } from 'react-bootstrap';
 import Lightbox from 'react-image-lightbox';
 import { useState, useEffect } from 'react';
 import MediaQuery from 'react-responsive';
+import throttle from 'lodash.throttle';
 
 const captions = [
-  'New Construction: $728,000 (3 beds, 3 baths, 2,542 sqft)))))))))))))))))))))))))',
+  'New Construction: $728,000 (3 beds, 3 baths, 2,542 sqft)',
 ];
 
 const tempImg = [
@@ -234,6 +235,7 @@ export default class Gallery extends React.Component {
     super(props);
     this.state = {
       isOpen: false,
+      windowWidth: 0,
       photoIndex: 0,
       direction: null,
       profile: null || tempImg[0],
@@ -243,6 +245,8 @@ export default class Gallery extends React.Component {
       repeatIcon: <span className="glyphicon glyphicon-repeat" />,
       hideIcon: <span style={{'display':'none'}} />
     };
+      this.handleClick = this.handleClick.bind(this);
+      this.handleClickImage = this.handleClickImage.bind(this);
   }
 
   componentDidMount() {
@@ -253,12 +257,14 @@ export default class Gallery extends React.Component {
     }
     this.setState({
       houseId: houseNum,
-      profile: imageUrl[houseNum]
+      profile: imageUrl[houseNum],
+      windowWidth: window.innerWidth,
     });
+
+    window.addEventListener('')
   }
 
   handleClick(selectedIndex, e) {
-    console.log('index is', selectedIndex)
     this.setState({
       index: selectedIndex,
       direction: e.direction,
@@ -274,6 +280,7 @@ export default class Gallery extends React.Component {
   }
 
   render() {
+
     const {
       isOpen, index, images, profile, photoIndex, repeatIcon, hideIcon
     } = this.state;
@@ -283,21 +290,24 @@ export default class Gallery extends React.Component {
         indicators={false}
         activeIndex={index}
         prevIcon={index === 0 ? hideIcon: <span className="glyphicon glyphicon-chevron-left"/>}
-        nextIcon={index === images.length - 1 ? repeatIcon : <span className="glyphicon glyphicon-chevron-right" />}
-        onSelect={this.handleClick.bind(this)}
+        nextIcon={index === images.length ? repeatIcon : <span className="glyphicon glyphicon-chevron-right" />}
+        onSelect={this.handleClick}
       >
 
           <Carousel.Item>
             <div className="img-container">
               <div className="main-profile">
-                <Image src={profile} responsive
+                <Image
+                  id="home-profile-image"
+                  src={profile}
                   onClick={e => this.handleClickImage(e, 0)}
-                    />
+                  responsive
+                />
                     {
                       isOpen
                       && (
                       <Lightbox
-                        mainSrc={images[(photoIndex + images.length) % images.length]}
+                        mainSrc={photoIndex === 0 ? profile : images[photoIndex]}
                         nextSrc={images[(photoIndex + images.length + 1) % images.length]}
                         prevSrc={images[(photoIndex + images.length - 1) % images.length]}
                         onMovePrevRequest={() => this.setState({
@@ -313,6 +323,9 @@ export default class Gallery extends React.Component {
                       )
                     }
               </div>
+
+
+              {this.state.windowWidth > 1023 &&
               <div className="img-side-pictures-container">
                 {
                   images.slice(1).map((image, i) => (
@@ -327,27 +340,47 @@ export default class Gallery extends React.Component {
                   ))
                 }
               </div>
+              }
+
+
             </div>
           </Carousel.Item>
+
+        {this.state.windowWidth < 1023 &&
+          images.map((image, i) => (
+            <Carousel.Item key={i}>
+                <div>
+                  <Image
+                    src={image}
+                    onClick={e => this.handleClickImage(e, i + 1)}
+                    responsive
+                  />
+                </div>
+            </Carousel.Item>
+          ))
+        }
+
+      {this.state.windowWidth > 1023 &&
           <Carousel.Item>
-          <div className="img-container">
-            <div className="img-side-pictures-container">
-              {
-                images.slice(9).map((image, i) => (
-                  <div className="home-children-pictures" key={i}>
-                    <img
-                      className="gallery-images"
-                      alt="house-details"
-                      src={image}
-                      onClick={e => this.handleClickImage(e, i + 9)}
-                    />
+                <div className="img-container">
+                  <div className="img-side-pictures-container">
+                    {
+                      images.slice(9).map((image, i) => (
+                        <div className="home-children-pictures" key={i}>
+                          <img
+                            className="gallery-images"
+                            alt="house-details"
+                            src={image}
+                            onClick={e => this.handleClickImage(e, i + 9)}
+                          />
+                        </div>
+                      ))
+                    }
                   </div>
-                ))
-              }
-            </div>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
+                </div>
+          </Carousel.Item>}
+
+        {this.state.windowWidth > 1023 && <Carousel.Item>
           <div className="img-container">
             <div className="img-side-pictures-container">
               {
@@ -365,7 +398,7 @@ export default class Gallery extends React.Component {
             </div>
           </div>
         </Carousel.Item>
-
+        }
       </Carousel>
     );
   }

@@ -7,14 +7,14 @@ import { useState, useEffect } from 'react';
 
 const App = () => {
   const [propInfo, setPropInfo] = useState([
-    { 
-      id: 0,  
+    {
+      id: 0,
       address: '5656 Thiel Highway',
       zipcode: '26591',
       city: 'Lilyanton',
       State: 'Florida'
     }
-  ]);  
+  ]);
   const [height, setHeight] = useState(false);
   const [slider, setSlider] = useState('nav-toolbar-list');
 
