@@ -5,22 +5,29 @@ import {
 } from 'react-bootstrap';
 
 const NavToolbar = ({ height, slider }) => {
-  const [save, saveFavorite] = useState(0);
+  const [save, saveFavorite] = useState(false);
 
   return (
   <Navbar id="nav-toolbar" className="nav-toolbar-class" fixedTop={height}>
     <Nav id={slider}>
       <NavItem id={height ? 'navItem-contact-highlight' : 'navItem-contact'}>
+        <div id='chat-agent'>
         <i className="far fa-comment"/>
         CONTACT AGENT
+        </div>
       </NavItem>
-      <NavItem onClick={() => saveFavorite(save + 1)}>
-        <span id={save > 0 ? 'favorite-active' : 'none'}>
-          <i className="far fa-heart" />
+      <NavItem
+        id='add-favorites'
+        onClick={() => saveFavorite(!save)}>
+        <span id={save ? 'favorite-active' : 'none'}>
+          {!save && <i className="far fa-heart" />}
+          {save && <i className="fas fa-heart" />}
         </span>
         SAVE
       </NavItem>
-      <NavItem>
+      <NavItem
+        id='messenger-button'
+      >
         <i className="fas fa-envelope-square" />
         SHARE
       </NavItem>
