@@ -15,9 +15,6 @@
   margin-left: 7em;
 }
 
-#nav-toolbar-list {
-  display: flex;
-}
 
 #Nav-top-right1, #Nav-top-right2, #Nav-top-right3 {
   color:#0074e4;
@@ -38,13 +35,24 @@
 
 #nav-toolbar {
   background-color: #d9f0f9;
+  margin-bottom: 10px;
 }
 
 #nav-top-header {
   background-color: white;
 }
 
+@media screen and (max-width: 475px) {
+  #SubNav-dropdowns {
+    display: none;
+  }
+}
 
+@media screen and (max-width: 375px) {
+  .container > ul > li > a {
+    font-size: 0.8em;
+  }
+}
 
 @media screen and (min-width: 1024px) {
   .img-side-pictures-container {
@@ -65,11 +73,6 @@
   }
 }
 
-/*@media screen and (max-width: 420px) {
-  .img-side-pictures-container {
-    display: none;
-  }
-}*/
 @media screen and (max-width: 1024px) {
   .img-side-pictures-container {
     display: none;
@@ -113,9 +116,7 @@
   .propertyInfo-main {
     display: none;
   }
-  /* #nav-toolbar {
-    display: none;
-  } */
+
 }
 #logo-back-icon {
   position: relative;
@@ -140,6 +141,8 @@
   }
   #nav-toolbar-list {
     margin-left: 0px;
+  }
+  #nav-toolbar > div > ul {
     display: flex;
   }
 }
@@ -154,6 +157,9 @@
   margin-left: 120px;
 }
 
+.container {
+  padding-left: 0;
+}
 
 .propertyInfo-bar-right {
   position: relative;
@@ -237,7 +243,7 @@
 .propertyInfo-main {
   position: relative;
   vertical-align: top;
-  padding: 15px;
+  padding: 0px 15px 15px 0px;
 }
 
 .propertyInfo-bar {
@@ -271,7 +277,7 @@
   cursor: pointer
 }
 .carousel-control {
-  width: 5%;
+  width: 6%;
   font-size: 30px;
 }
 

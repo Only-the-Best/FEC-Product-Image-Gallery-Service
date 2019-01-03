@@ -351,7 +351,7 @@ export default class Gallery extends React.Component {
             </div>
           </Carousel.Item>
 
-        {this.state.windowWidth < 1024 &&
+        {this.state.windowWidth <= 1110 &&
           images.map((image, i) => (
             <Carousel.Item key={i}>
                 <div>
@@ -365,7 +365,7 @@ export default class Gallery extends React.Component {
           ))
         }
 
-      {this.state.windowWidth > 1110 &&
+      {this.state.windowWidth >= 1024 &&
           <Carousel.Item>
                 <div className="img-container">
                   <div className="img-side-pictures-container">
@@ -385,7 +385,7 @@ export default class Gallery extends React.Component {
                 </div>
           </Carousel.Item>}
 
-        {this.state.windowWidth > 1110 && <Carousel.Item>
+        {this.state.windowWidth >= 1024 && <Carousel.Item>
           <div className="img-container">
             <div className="img-side-pictures-container">
               {
