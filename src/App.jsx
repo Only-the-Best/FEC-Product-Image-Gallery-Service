@@ -17,6 +17,7 @@ const App = () => {
   ]);
   const [height, setHeight] = useState(false);
   const [slider, setSlider] = useState('nav-toolbar-list');
+  const [tooltipVisible, setTooltipVisible] = useState(true);
 
   const updateWindowHeight = () => {
       window.onscroll = () => {
@@ -35,10 +36,20 @@ const App = () => {
     updateWindowHeight();
   },[]);
 
+  useEffect(() => {
+    if (!localStorage.getItem('first-visit-browse-homes')) {
+      localStorage.setItem('first-visit-browse-homes', 'true');
+      setTimeout(() => setTooltipVisible(false), 15000)
+    } else {
+      setTooltipVisible(false);
+    }
+  }, []);
+
+
   return (
     <div className="main-wrapper">
       <Logo />
-      <NavToolbar height={height} slider={slider} />
+      <NavToolbar height={height} slider={slider} tooltipVisible={tooltipVisible}/>
       <PropertyInfo info={propInfo[0]} />
       <Gallery />
     </div>

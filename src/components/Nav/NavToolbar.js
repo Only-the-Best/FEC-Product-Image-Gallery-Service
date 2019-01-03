@@ -1,12 +1,22 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import {
-  Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton,
+  Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Tooltip, OverlayTrigger
 } from 'react-bootstrap';
 
-const NavToolbar = ({ height, slider }) => {
-  const [save, saveFavorite] = useState(false);
+const tooltipFav = (
+  <Tooltip placement="bottom" className="tooltip" id="tooltip-bottom">
+  Click here to add a house <br /> to your favorites!
+</Tooltip>);
 
+const tooltipMessenger = (
+  <Tooltip placement="bottom" className="tooltip" id="tooltip-bottom">
+    Click here to go to the messenger. Share your favorites or chat with an agent!
+  </Tooltip>
+);
+
+const NavToolbar = ({ height, slider, tooltipVisible }) => {
+  const [save, saveFavorite] = useState(false);
   return (
   <Navbar id="nav-toolbar" className="nav-toolbar-class" fixedTop={height}>
     <Nav id={slider}>
@@ -19,18 +29,46 @@ const NavToolbar = ({ height, slider }) => {
       <NavItem
         id='add-favorites'
         onClick={() => saveFavorite(!save)}>
+        {tooltipVisible && <OverlayTrigger
+          placement="top"
+          defaultOverlayShown={tooltipVisible}
+          overlay={tooltipFav}>
         <span id={save ? 'favorite-active' : 'none'}>
           {!save && <i className="far fa-heart" />}
           {save && <i className="fas fa-heart" />}
         </span>
+        </OverlayTrigger>}
+        {!tooltipVisible && <OverlayTrigger
+          placement="top"
+          defaultOverlayShown={false}
+          overlay={tooltipFav}>
+        <span id={save ? 'favorite-active' : 'none'}>
+          {!save && <i className="far fa-heart" />}
+          {save && <i className="fas fa-heart" />}
+        </span>
+        </OverlayTrigger>}
         SAVE
       </NavItem>
+
       <NavItem
         id='messenger-button'
       >
-        <i className="fas fa-envelope-square" />
+        {tooltipVisible && <OverlayTrigger
+          placement="bottom"
+          defaultOverlayShown={tooltipVisible}
+          overlay={tooltipMessenger}>
+          <i className="fas fa-envelope-square" />
+        </OverlayTrigger>}
+        {!tooltipVisible && <OverlayTrigger
+          placement="bottom"
+          defaultOverlayShown={false}
+          overlay={tooltipMessenger}>
+          <i className="fas fa-envelope-square" />
+        </OverlayTrigger>}
         SHARE
       </NavItem>
+
+
       <NavDropdown title="MORE" id="SubNav-dropdowns">
         <MenuItem>Print</MenuItem>
         <MenuItem>Get New Listings In Email</MenuItem>
