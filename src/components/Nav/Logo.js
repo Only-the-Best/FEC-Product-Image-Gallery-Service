@@ -8,7 +8,7 @@ const Logo = () => (
 <Navbar.Header>
   <Navbar.Brand>
     <a href="/">
-      <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
+      <Image id="brand" src="https://s3-us-west-1.amazonaws.com/pwa-staticimg/logo2.png" />
     </a>
   </Navbar.Brand>
 </Navbar.Header>

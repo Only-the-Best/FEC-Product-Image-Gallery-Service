@@ -88,8 +88,16 @@
 }
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
   width: 100%;
-  height: 18em;
+  height: auto;
+  min-height: 220px;
 }
+@media screen and (max-width: 500px) {
+  .carousel-inner {
+    max-height: 16em;
+  }
+}
+
+
 .gallery-images {
   padding: 1px;
   width: 320px;
@@ -98,12 +106,11 @@
 
 #brand {
   position: relative;
-  bottom: 15px;
+  bottom: 13px;
   left: 1em;
   width: 100px;
   z-index: 10;
   height: 103px;
-  background-color:black;
 }
 
 .Nav-top-bar-header {
@@ -117,6 +124,7 @@
 
 #nav-top-main-right {
   float: right;
+  margin-right: 5%;
 }
 
 .breadcrumb-row {
@@ -145,11 +153,9 @@
     float: left;
   }
   #brand {
-    width: 20%;
+    width: 13%;
     height: auto;
     float: left;
-    margin-top: 0.5rem;
-
   }
   #nav-toolbar-list {
     margin-left: 0px;

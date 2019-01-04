@@ -4,17 +4,12 @@ import Gallery from './components/Gallery/Gallery.js';
 import PropertyInfo from './components/Nav/PropertyInfo.js';
 import Logo from './components/Nav/Logo.js';
 import { useState, useEffect } from 'react';
+import houseData from '../../datas.js';
 
 const App = () => {
-  const [propInfo, setPropInfo] = useState([
-    {
-      id: 0,
-      address: '5656 Thiel Highway',
-      zipcode: '26591',
-      city: 'Lilyanton',
-      State: 'Florida'
-    }
-  ]);
+  const [propInfo, setPropInfo] = useState(
+    houseData
+  );
   const [height, setHeight] = useState(false);
   const [slider, setSlider] = useState('nav-toolbar-list');
   const [tooltipVisible, setTooltipVisible] = useState(true);
@@ -32,9 +27,11 @@ const App = () => {
     };
 
   useEffect(() => {
-    let imageId = Number(window.location.pathname.replace(/\//, ''));
+    let imageId = Number(window.location.pathname.replace(/\/browser\//, '')) || 0;
+
+    setPropInfo(propInfo.houseData[imageId])
     updateWindowHeight();
-    
+
     if (!localStorage.getItem('first-visit-browse-homes')) {
       localStorage.setItem('first-visit-browse-homes', 'true');
       setTimeout(() => setTooltipVisible(false), 15000)
@@ -43,21 +40,11 @@ const App = () => {
     }
   },[]);
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem('first-visit-browse-homes')) {
-  //     localStorage.setItem('first-visit-browse-homes', 'true');
-  //     setTimeout(() => setTooltipVisible(false), 15000)
-  //   } else {
-  //     setTooltipVisible(false);
-  //   }
-  // }, []);
-
-
   return (
     <div className="main-wrapper">
       <Logo />
       <NavToolbar height={height} slider={slider} tooltipVisible={tooltipVisible}/>
-      <PropertyInfo info={propInfo[0]} />
+      <PropertyInfo info={propInfo} />
       <Gallery />
     </div>
   );

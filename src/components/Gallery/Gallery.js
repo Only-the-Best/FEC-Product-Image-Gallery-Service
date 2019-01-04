@@ -16,7 +16,6 @@ export default class Gallery extends React.Component {
       windowWidth: 0,
       photoIndex: 0,
       direction: null,
-      profile: '',
       index: 0,
       images: imgUrls,
       imagesPreview: imgPreviews,
@@ -40,11 +39,9 @@ export default class Gallery extends React.Component {
 
     this.setState({
       houseId: houseNum,
-      profile: profileImgs[houseNum],
       windowWidth: window.innerWidth,
       images: [profileImgs[houseNum], ...this.state.images],
     });
-
 
     window.addEventListener('resize', this.getWindowWidth);
   }
@@ -84,7 +81,10 @@ export default class Gallery extends React.Component {
         indicators={false}
         activeIndex={index}
         prevIcon={index === 0 ? hideIcon: leftIcon}
-        nextIcon={(windowWidth <= 1024 && index === images.length - 1) || (windowWidth >= 1024 && index === 2) ? repeatIcon : rightIcon}
+        nextIcon={
+          (windowWidth <= 1024 && index === images.length - 1) || (windowWidth >= 1024 && index === 2) ?
+          repeatIcon : rightIcon
+        }
         onSelect={this.handleClick}
       >
 
@@ -93,8 +93,9 @@ export default class Gallery extends React.Component {
             <div className="main-profile">
               <Image
                 id="home-profile-image"
-                src={profile}
-                onClick={e => this.handleClickImage(e, 0)}
+                src={images[0]}
+                alt="home-profile-image"
+                onClick={e => this.handleClickImage(e, 0)}                
                 responsive
               />
 
@@ -120,7 +121,7 @@ export default class Gallery extends React.Component {
             }
 
             {
-              this.state.windowWidth >= 1024 &&
+              windowWidth >= 1024 &&
               <div className="img-side-pictures-container">
                 {
                   imagesPreview.map((image, i) => (
@@ -142,12 +143,13 @@ export default class Gallery extends React.Component {
 
         {/*If browser width is less than 1024 px then render Mobile Version*/}
         {
-          this.state.windowWidth <= 1024 &&
+          windowWidth <= 1024 &&
           imagesPreview.map((image, i) => (
             <Carousel.Item key={i}>
                 <div>
                   <Image
                     src={image}
+                    alt="home-details"
                     onClick={e => this.handleClickImage(e, i + 1)}
                     responsive
                   />
@@ -157,7 +159,7 @@ export default class Gallery extends React.Component {
         }
 
       {
-        this.state.windowWidth >= 1024 &&
+        windowWidth >= 1024 &&
           <Carousel.Item>
                 <div className="img-container">
                   <div className="img-side-pictures-container">
@@ -168,7 +170,7 @@ export default class Gallery extends React.Component {
                             className="gallery-images"
                             alt="house-details"
                             src={image}
-                            onClick={e => this.handleClickImage(e, i + 9)}
+                            onClick={e => this.handleClickImage(e, i + 9)}                            
                           />
                         </div>
                       ))
@@ -178,7 +180,7 @@ export default class Gallery extends React.Component {
           </Carousel.Item>
         }
         {
-          this.state.windowWidth >= 1024 &&
+          windowWidth >= 1024 &&
           <Carousel.Item>
             <div className="img-container">
               <div className="img-side-pictures-container">
@@ -189,7 +191,7 @@ export default class Gallery extends React.Component {
                         className="gallery-images"
                         alt="house-details"
                         src={image}
-                        onClick={e => this.handleClickImage(e, i + 21)}
+                        onClick={e => this.handleClickImage(e, i + 21)}                       
                       />
                     </div>
                   ))
