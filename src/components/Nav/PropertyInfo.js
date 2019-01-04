@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PropertyInfo = ({ info }) => (
-  <div className="propertyInfo-main">  
+  <div className="propertyInfo-main">
   <div className="breadcrumb-row">
       <ul className="propertyInfo-bar">
         <li>
@@ -23,7 +23,7 @@ const PropertyInfo = ({ info }) => (
         </ul>
       </div>
     {/* </div> */}
-    
+
   </div>
 );
 

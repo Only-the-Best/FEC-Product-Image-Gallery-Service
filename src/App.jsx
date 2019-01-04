@@ -34,16 +34,23 @@ const App = () => {
   useEffect(() => {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     updateWindowHeight();
-  },[]);
-
-  useEffect(() => {
+    
     if (!localStorage.getItem('first-visit-browse-homes')) {
       localStorage.setItem('first-visit-browse-homes', 'true');
       setTimeout(() => setTooltipVisible(false), 15000)
     } else {
       setTooltipVisible(false);
     }
-  }, []);
+  },[]);
+
+  // useEffect(() => {
+  //   if (!localStorage.getItem('first-visit-browse-homes')) {
+  //     localStorage.setItem('first-visit-browse-homes', 'true');
+  //     setTimeout(() => setTooltipVisible(false), 15000)
+  //   } else {
+  //     setTooltipVisible(false);
+  //   }
+  // }, []);
 
 
   return (

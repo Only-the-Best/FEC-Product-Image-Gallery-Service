@@ -22,7 +22,9 @@ export default class Gallery extends React.Component {
       imagesPreview: imgPreviews,
       houseId: 0,
       repeatIcon: <span className="glyphicon glyphicon-repeat" />,
-      hideIcon: <span style={{'display':'none'}} />
+      hideIcon: <span style={{'display':'none'}} />,
+      rightIcon: <span className="glyphicon glyphicon-chevron-right" />,
+      leftIcon: <span className="glyphicon glyphicon-chevron-left"/>,
     };
       this.handleClick = this.handleClick.bind(this);
       this.handleClickImage = this.handleClickImage.bind(this);
@@ -52,7 +54,7 @@ export default class Gallery extends React.Component {
   }
 
   getWindowWidth() {
-        this.setState({windowWidth: window.innerWidth});
+    this.setState({windowWidth: window.innerWidth});
   }
 
   handleClick(selectedIndex, e) {
@@ -73,7 +75,7 @@ export default class Gallery extends React.Component {
   render() {
 
     const {
-      isOpen, index, images, profile, photoIndex, repeatIcon, hideIcon, imagesPreview
+      isOpen, index, images, profile, photoIndex, repeatIcon, hideIcon, imagesPreview, windowWidth, rightIcon, leftIcon
     } = this.state;
     return (
 
@@ -81,8 +83,8 @@ export default class Gallery extends React.Component {
         interval={null}
         indicators={false}
         activeIndex={index}
-        prevIcon={index === 0 ? hideIcon: <span className="glyphicon glyphicon-chevron-left"/>}
-        nextIcon={index === images.length - 1 ? repeatIcon : <span className="glyphicon glyphicon-chevron-right" />}
+        prevIcon={index === 0 ? hideIcon: leftIcon}
+        nextIcon={(windowWidth <= 1024 && index === images.length - 1) || (windowWidth >= 1024 && index === 2) ? repeatIcon : rightIcon}
         onSelect={this.handleClick}
       >
 
@@ -117,26 +119,28 @@ export default class Gallery extends React.Component {
               )
             }
 
-            {this.state.windowWidth >= 1024 &&
-            <div className="img-side-pictures-container">
-              {
-                imagesPreview.map((image, i) => (
-                  <div className="home-children-pictures" key={i}>
-                    <img
-                      className="gallery-images"
-                      alt="house-details"
-                      src={image}
-                      onClick={e => this.handleClickImage(e, i + 1)}
-                    />
-                  </div>
-                ))
-              }
-            </div>
+            {
+              this.state.windowWidth >= 1024 &&
+              <div className="img-side-pictures-container">
+                {
+                  imagesPreview.map((image, i) => (
+                    <div className="home-children-pictures" key={i}>
+                      <img
+                        className="gallery-images"
+                        alt="house-details"
+                        src={image}
+                        onClick={e => this.handleClickImage(e, i + 1)}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
             }
 
           </div>
         </Carousel.Item>
 
+        {/*If browser width is less than 1024 px then render Mobile Version*/}
         {
           this.state.windowWidth <= 1024 &&
           imagesPreview.map((image, i) => (
@@ -151,6 +155,7 @@ export default class Gallery extends React.Component {
             </Carousel.Item>
           ))
         }
+
       {
         this.state.windowWidth >= 1024 &&
           <Carousel.Item>

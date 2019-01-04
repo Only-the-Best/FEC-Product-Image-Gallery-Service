@@ -46,6 +46,10 @@
   background-color: white;
 }
 
+#SubNav-dropdowns {
+  margin-top: 1.5px;
+}
+
 @media screen and (max-width: 475px) {
   #SubNav-dropdowns {
     display: none;
